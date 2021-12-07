@@ -54,7 +54,7 @@
                                 <label for="exampleInputEmail1" class="form-label">Card Number</label>
                                 <input type="text" name="card_number" class="form-control {{ $errors->has('card_number') ? 'is-invalid': '' }}" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 @if($errors->has('card_number'))
-                                <div class="text-danger">{{$errors->first('card')}}</div>
+                                <div class="text-danger">{{$errors->first('card_number')}}</div>
                                 @endif
                             </div>
                             <div class="mb-5">

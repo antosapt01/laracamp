@@ -46,14 +46,23 @@
                                 <div class="form-group first mb-2">
                                     <label for="email">Email</label>
                                     <input type="text" class="form-control" name="email" id="email">
-
+                               
                                 </div>
+                                @if($errors->email)
+                                <div class="text-danger">
+                                    {{$errors->first('email')}}
+                                </div>
+                                @endif
                                 <div class="form-group last mb-4">
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" name="password" id="password">
 
                                 </div>
-
+                                @if($errors->password)
+                                <div class="text-danger">
+                                    {{$errors->first('password')}}
+                                </div>
+                                @endif
                                 <div class="d-flex mb-5 align-items-center">
                                     <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
                                         <input type="checkbox" checked="checked" />
