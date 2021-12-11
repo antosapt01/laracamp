@@ -17,13 +17,18 @@ class UserController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
+    
     public function handleProviderCallback()
     {
-        $callback = Socialite::driver('google')->user();
+        $callback = Socialite::driver('google')->stateless()->user();
+        $name = $callback->getName();
+        $initial = "https://ui-avatars.com/api/?name=$name&background=0D8ABC&color=fff";
+
         $data = [
             'name' => $callback->getName(),
             'email' => $callback->getEmail(),
             'avatar' => $callback->getAvatar(),
+            'initial' => $initial,
             'email_varified_at' => date('Y-m-d H:i:s', time()),
         ];
         $user = User::firstOrCreate(['email' => $data['email']], $data);

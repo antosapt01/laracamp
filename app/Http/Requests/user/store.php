@@ -24,11 +24,13 @@ class store extends FormRequest
      */
     public function rules()
     {
+        $expiredValidation = date('Y-m', time());
         return [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.Auth::id(),
             'card_number' => 'bail:required|min:16|max:16',
-            'cvc' => 'required|min:3|max:3'
+            'cvc' => 'required|min:3|max:3',
+            'expired' => 'required|date|date_format:Y-m|after_or_equal:'.$expiredValidation,
         ];
     }
 }

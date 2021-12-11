@@ -49,10 +49,13 @@
                             <div class="mb-4">
                                 <label for="exampleInputEmail1" class="form-label">Occupation</label>
                                 <input type="text" name="occupation" class="form-control" value="{{ Auth::user()->occupation }}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                @if($errors->has('occupation'))
+                                <div class="text-danger">{{$errors->first('occupation')}}</div>
+                                @endif
                             </div>
                             <div class="mb-4">
                                 <label for="exampleInputEmail1" class="form-label">Card Number</label>
-                                <input type="text" name="card_number" class="form-control {{ $errors->has('card_number') ? 'is-invalid': '' }}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input type="text" name="card_number" class="form-control {{ $errors->has('card_number') ? 'is-invalid': '' }}" value="{{old('card_number')}}" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 @if($errors->has('card_number'))
                                 <div class="text-danger">{{$errors->first('card_number')}}</div>
                                 @endif
@@ -61,11 +64,14 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
                                         <label for="exampleInputEmail1" class="form-label">Expired</label>
-                                        <input type="date" name="expired" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        <input type="month" name="expired" value="{{old('expired')}}"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        @if($errors->has('expired'))
+                                        <div class="text-danger">{{$errors->first('expired')}}</div>
+                                        @endif
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <label for="exampleInputEmail1" class="form-label">CVC</label>
-                                        <input type="text" name="cvc" class="form-control {{ $errors->has('cvc') ? 'is-invalid': '' }}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        <input type="text" name="cvc" class="form-control {{ $errors->has('cvc') ? 'is-invalid': '' }}" value="{{old('cvc')}}" id="exampleInputEmail1" aria-describedby="emailHelp">
                                         @if($errors->has('cvc'))
                                         <div class="text-danger">{{$errors->first('cvc')}}</div>
                                         @endif

@@ -31,7 +31,7 @@
                 <div class="col-md-6 contents">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
-                            <div class="mb-4 mt-4">
+                            <div class="mb-4 mt-0">
                                 <img src="assets/images/logo.png" height="50px" class="logo-2" alt="">
                                 <h3></h3>
                                 <h4 class="header-third">

@@ -17,7 +17,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
-    <title>Login #7</title>
+    <title>Sign In</title>
 </head>
 
 <body>
@@ -43,32 +43,33 @@
                             </div>
                             <form action="/login" method="post">
                                 @csrf
-                                <div class="form-group first mb-2">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" name="email" id="email">
-                               
-                                </div>
-                                @if($errors->email)
-                                <div class="text-danger">
-                                    {{$errors->first('email')}}
+                                @if($errors->any())
+                                <div class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                    <div class="row">
+                                        {{$error}}
+                                    </div>
+                                    @endforeach
                                 </div>
                                 @endif
+                                <div class="form-group first mb-2">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" value="{{old('email')}}" name="email" id="email">
+
+                                </div>
+
                                 <div class="form-group last mb-4">
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" name="password" id="password">
 
                                 </div>
-                                @if($errors->password)
-                                <div class="text-danger">
-                                    {{$errors->first('password')}}
-                                </div>
-                                @endif
+
                                 <div class="d-flex mb-5 align-items-center">
                                     <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
                                         <input type="checkbox" checked="checked" />
                                         <div class="control__indicator"></div>
                                     </label>
-                                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                                    <span class="ml-auto"><a href="/forgot-password" class="forgot-pass">Forgot Password</a></span>
                                 </div>
 
                                 <input type="submit" value="Log In" class="btn btn-block btn-primary">

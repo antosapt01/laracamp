@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light pt-2 pb-2">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="assets/images/logo.png" alt="">
+            <img src="{{asset('assets/images/logo.png')}}" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,7 +25,7 @@
                 @auth
                 <div class="d-flex user-logged nav-item dropdown no-arrow">
                     <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ Auth::user()->name }} 
+                        <strong>Hi</strong>, {{ Auth::user()->name }} 
                         @if(Auth::user()->avatar != null)
                         <img src=" {{ Auth::user()->avatar }}" class="user-photo rounded-pill img-thumbnail" alt="">
                         @else
@@ -33,7 +33,7 @@
                         @endif
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li>
-                                <a href="#" class="dropdown-item">My Dashboard</a>
+                                <a href="/dashboard" class="dropdown-item">My Dashboard</a>
                             </li>
                             <li>
                                 <a href=" " class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Sign Out</a>
